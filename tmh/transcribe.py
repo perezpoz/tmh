@@ -120,7 +120,7 @@ class TranscribeModel:
         output_word_offsets: whether to output word offsets or not (not yet implemented) # TODO
         save_to_file: whether to save to file or not
         reduce_noise: whether to reduce noise or not
-        output_format: the format of the output, either "json" or "text"
+        output_format: the format of the output, either "json", "str" or "str_dots"
 
         return: transcriptions in the format specified by output_format (default: json)
         """

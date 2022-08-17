@@ -37,7 +37,7 @@ def transcribe_from_audio_path_with_lm(audio_path, model_id="viktor-enzell/wav2v
     return transcripts[0]
 
 
-def transcribe_from_audio_path_with_lm_vad(audio_path, model_id="viktor-enzell/wav2vec2-large-voxrex-swedish-4gram", model=None, processor=None, output_format='text'):
+def transcribe_from_audio_path_with_lm_vad(audio_path, model_id="viktor-enzell/wav2vec2-large-voxrex-swedish-4gram", model=None, processor=None, output_format='str'):
     audio_path, converted = ensure_wav(audio_path)
 
     sample_rate = 16000
@@ -74,7 +74,7 @@ def transcribe_from_audio_path_with_lm_vad(audio_path, model_id="viktor-enzell/w
     if converted:
         os.remove(audio_path)
 
-    if output_format == "text":
+    if output_format == "str_dots":
         result = ". ".join([t["transcription"] for t in transcriptions])
 
     elif output_format == "str":
