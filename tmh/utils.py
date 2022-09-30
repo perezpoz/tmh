@@ -21,7 +21,7 @@ def change_sample_rate(audio_path: str, new_sample_rate: int = 16000):
     """
     Change the sample rate of an audio file. Defaults to 16000 Hz.
     """
-    audio_to_resample, sr = librosa.load(audio_path)
+    audio_to_resample, sr = librosa.load(audio_path, sr = None)
     resampled_audio = librosa.resample(audio_to_resample, sr, new_sample_rate)
     resampled_tensor = torch.tensor([resampled_audio])
     return resampled_tensor
@@ -60,7 +60,7 @@ def convert_to_wav(audio_path: str, output_path: str = None):
     """
     path = audio_path.split("/")
     filename = path[-1].split(".")[0]
-    audio, sr = librosa.load(audio_path)
+    audio, sr = librosa.load(audio_path, sr = None)
     wavpath = f'{filename}.wav'
     if output_path:
         wavpath = f"{output_path}/{wavpath}"
